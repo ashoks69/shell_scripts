@@ -7,4 +7,5 @@ echo "Preset working Dir $PWD"
 echo "Home dir of current user : $HOME"
 echo "which user is runninght scrtpt $USER"
 echo "process id of current script $$"
+sleep 10 &
 echo "process id of last command in the background $!"  
