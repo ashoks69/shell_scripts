@@ -2,18 +2,19 @@
 
 USERID=$(id -u) #id -u = user id; USERID = variable
 
+R="\e[31m" #red color
+G="\e[32m" #green color
+Y="\e[33m" #yellow color
+N="\e[0m" #no color
+
 VALIDATE(){
 	if [ $1 -ne 0 ]
 			 then
-				echo  "$2.....FAIL"
+				echo  "$2.....$R FAIL $N"
 			 else
-				echo "$2.....Success"
+				echo "$2.....$G Success $N"
 			fi
 			}
-# R="\e[31m" #red color
-# G="\e[32m" #green color
-# Y="\e[33m" #yellow color
-# N="\e[0m" #no color
 
 if [ $USERID -ne 0 ]
  then
@@ -27,7 +28,7 @@ if [ $? -ne 0 ] # 0 means it not installed ; -ne = not equal
 		dnf install mysql -y
 		VALIDATE $? "Installing MYSQL" #function call
 	else
-		echo "MYSQL is already.....INSTALLED"
+		echo "MYSQL is already.....$Y INSTALLED $N"
 fi
 
 dnf list installed git #list all installed software
@@ -36,5 +37,5 @@ if [ $? -ne 0 ] # 0 means it not installed
 		dnf install git -y
 		VALIDATE $? "Installing Git" #function call
 	else
-		echo "GIT is already.....INSTALLED"
+		echo "GIT is already.....$Y INSTALLED $N"
 fi
